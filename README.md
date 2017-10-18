@@ -7,8 +7,9 @@ This GitHub repository is place to store all Meetup Materials, presentations and
 __Useful links:__
 
 _Groups_
-* [Slack Group Qgis Slovenia](https://qgisslovenia.slack.com/)
+* [MeetUp Group GeoDev Slovenia](https://www.meetup.com/GeoDev-Meetup-Slovenia/)
 * [Facebook Group GeoDev Slovenia](https://www.facebook.com/geodevslovenia/)
+* [Slack Group Qgis Slovenia](https://qgisslovenia.slack.com/)
 
 _Data_
 * [Slovenski Inspire metapodatkovni portal](http://prostor4.gov.si/imps/srv/slv/catalog.search#/home)
