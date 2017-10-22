@@ -14,6 +14,6 @@ Useful resources:
 * [QT](https://www1.qt.io/download/)
 * [QT Documentation](http://doc.qt.io/qt-4.8/index.html)
 * [GoogleMaps APIs](https://developers.google.com/maps/) 
-* [GoogleMaps GeoCoding API](https://www.google.si/search?q=googlemaps+api+geocode&oq=googlemaps+api+geocode&gs_l=psy-ab.3...686.2229.0.2301.8.6.0.0.0.0.0.0..0.0....0...1.1.64.psy-ab..8.0.0....0.5fVSuD2Wbwg)
+* [GoogleMaps GeoCoding API](https://developers.google.com/maps/documentation/geocoding/intro)
 
 
