@@ -4,6 +4,15 @@ This GeoDev Meetup is open, friendly, technical gathering for GIS users, GIS dev
 
 This GitHub repository is place to store all Meetup Materials, presentations and useful links.
 
+__Propsed Future Topics__:
+
+*Open Geo-Spatial Data (GURS, ARSO, SURS, ...)
+*Geoserver
+*Openlayers, Leaflet examples
+*PostGis
+*EO - Sentinel 1 & Sentinel 2 (SentinelHUB)
+* _ADD YOUR SUGGESTION_
+
 __Useful links:__
 
 _Groups_
