@@ -6,11 +6,11 @@ This GitHub repository is place to store all Meetup Materials, presentations and
 
 __Propsed Future Topics__:
 
-*Open Geo-Spatial Data (GURS, ARSO, SURS, ...)
-*Geoserver
-*Openlayers, Leaflet examples
-*PostGis
-*EO - Sentinel 1 & Sentinel 2 (SentinelHUB)
+* Open Geo-Spatial Data (GURS, ARSO, SURS, ...)
+* Geoserver
+* Openlayers, Leaflet examples
+* PostGis
+* EO - Sentinel 1 & Sentinel 2 (SentinelHUB)
 * _ADD YOUR SUGGESTION_
 
 __Useful links:__
