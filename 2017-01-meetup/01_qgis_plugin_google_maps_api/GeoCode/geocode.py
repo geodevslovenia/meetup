@@ -80,6 +80,7 @@ class GeoCode:
 
         self.locationAddress = []
         self.locationCoo = []
+
         self.googleApiUrl = 'https://maps.googleapis.com/maps/api/geocode/'
         self.googleApiKey = 'AIzaSyBypRKpFU3eF85J311C8Y8GhsXEuSxja7E'
         self.format = 'json'
@@ -219,8 +220,6 @@ class GeoCode:
 
 
 ###################################################
-
-
     def loadFile(self):
         with open(QFileDialog.getOpenFileName(self.dockwidget, "Select file")) as f:
             for line in f:
@@ -228,68 +227,71 @@ class GeoCode:
 
         self.dockwidget.textPreview.setText(''.join(str(e) for e in self.locationAddress))
 
-    # def getGeoCode(self, address):
-    #     request = self.googleApiUrl + self.format + '?key=' + self.googleApiKey + '&address=' + address
-    #     print request
-    #     try:
-    #         return requests.get(request)
-    #     except requests.ConnectionError as error:
-    #         self.iface.messageBar().pushMessage("Connection error: ",
-    #                                             'Can not access serivce! Check your intrenet connection.',
-    #                                             level=QgsMessageBar.CRITICAL)
-    #         return False
+    def getGeoCode(self, address):
+        request = self.googleApiUrl + self.format + '?key=' + self.googleApiKey + '&address=' + address
+        print request
+        try:
+            return requests.get(request)
+        except requests.ConnectionError as error:
+            self.iface.messageBar().pushMessage("Connection error: ",
+                                                'Can not access serivce! Check your intrenet connection.',
+                                                level=QgsMessageBar.CRITICAL)
+            return False
 
-    # def geocode(self):
-    #     # vl = QgsVectorLayer("Point", "geocoding_points", "memory")
-    #     # pr = vl.dataProvider()
-    #     # vl.startEditing()
-    #     #
-    #     # # add fields
-    #     # pr.addAttributes([QgsField("formatted_address", QVariant.String),
-    #     #                   QgsField("route", QVariant.String),
-    #     #                   QgsField("street_number", QVariant.String),
-    #     #                   QgsField("administrative_area_level_1", QVariant.String),
-    #     #                   QgsField("postal_code", QVariant.String),
-    #     #                   QgsField("postal_town", QVariant.String),
-    #     #                   QgsField("country", QVariant.String)])
-    #     #
-    #     # attributes = ["route", "street_number", "administrative_area_level_1",
-    #     #               "postal_code", "postal_town", "country", "formatted_address"]
-    #     #
-    #     # vl.updateFields()
-    #     for address in self.locationAddress:
-    #         response = self.getGeoCode(address.replace(" ", "+"))
-    #         print response
-    #     #     if response:
-    #     #         content = json.loads(response.content)
-    #     #         for result in content['results']:
-    #     #             print result
-    #     #             fet = QgsFeature()
-    #     #             fet.setGeometry(QgsGeometry.fromPoint(QgsPoint(result['geometry']['location']['lng'],
-    #     #                                                            result['geometry']['location']['lat'])))
-    #     #
-    #     #             #Add attributes
-    #     #             # values = [result['formatted_address']]
-    #     #             # for attribute in attributes:
-    #     #             #     for component in result['address_components']:
-    #     #             #         if component['types'][0] == attribute:
-    #     #             #             values.append(component['long_name'])
-    #     #
-    #     #             fet.setAttributes(values)
-    #     #             pr.addFeatures([fet])
-    #     #
-    #     # vl.commitChanges()
-    #     # vl.updateExtents()
-    #     # QgsMapLayerRegistry.instance().addMapLayer(vl)
-    #
-    #
-    #     #Add labels!
-    #     # palyr = QgsPalLayerSettings()
-    #     # palyr.readFromLayer(vl)
-    #     # palyr.enabled = True
-    #     # palyr.fieldName = 'formatted_address'
-    #     # palyr.setDataDefinedProperty(QgsPalLayerSettings.Size, True, True, '11', '')
-    #     # palyr.writeToLayer(vl)
+    def geocode(self):
+        vl = QgsVectorLayer("Point", "geocoding_points", "memory")
+        pr = vl.dataProvider()
+        vl.startEditing()
+
+        # add fields
+        pr.addAttributes([QgsField("formatted_address", QVariant.String),
+                          QgsField("route", QVariant.String),
+                          QgsField("street_number", QVariant.String),
+                          QgsField("administrative_area_level_1", QVariant.String),
+                          QgsField("postal_code", QVariant.String),
+                          QgsField("postal_town", QVariant.String),
+                          QgsField("country", QVariant.String)])
+
+        attributes = ["route", "street_number", "administrative_area_level_1",
+                      "postal_code", "postal_town", "country", "formatted_address"]
+
+        vl.updateFields()
+
+        for address in self.locationAddress:
+            response = self.getGeoCode(address.replace(" ", "+"))
+            # print response
+            # print response.content
+            if response:
+                content = json.loads(response.content)
+                for result in content['results']:
+                    # print result
+                    # print result['geometry']['location']['lng']
+                    # print result['formatted_address']
+                    fet = QgsFeature()
+                    fet.setGeometry(QgsGeometry.fromPoint(QgsPoint(result['geometry']['location']['lng'],
+                                                                   result['geometry']['location']['lat'])))
+
+                    #Add attributes
+                    values = [result['formatted_address']]
+                    for attribute in attributes:
+                        for component in result['address_components']:
+                            if component['types'][0] == attribute:
+                                values.append(component['long_name'])
+
+                    fet.setAttributes(values)
+                    pr.addFeatures([fet])
+
+        vl.commitChanges()
+        QgsMapLayerRegistry.instance().addMapLayer(vl)
+
+
+        #Add labels!
+        palyr = QgsPalLayerSettings()
+        palyr.readFromLayer(vl)
+        palyr.enabled = True
+        palyr.fieldName = 'formatted_address'
+        palyr.setDataDefinedProperty(QgsPalLayerSettings.Size, True, True, '20', '')
+        palyr.writeToLayer(vl)
 
 
     #--------------------------------------------------------------------------
@@ -309,7 +311,7 @@ class GeoCode:
 
                 #Bind buttons to actions
                 self.dockwidget.pushButtonLoad.clicked.connect(self.loadFile)
-                # self.dockwidget.pushButtonGeoCode.clicked.connect(self.geocode)
+                self.dockwidget.pushButtonGeoCode.clicked.connect(self.geocode)
 
 
 
