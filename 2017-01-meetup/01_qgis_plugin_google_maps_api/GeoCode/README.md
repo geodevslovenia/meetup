@@ -4,8 +4,8 @@ This Plugin was used for demonstration during GeoDev Meetup Ljubljana 23.10.2017
 
 To add this plugin to your QGis, download it and copy it to:
 
-Windows : _Users/__User__/.qgis2/python/plugins_
-Mac: _home/.qgis2/python/plugins_
+* Windows : _Users/__User__/.qgis2/python/plugins_
+* Mac: _home/.qgis2/python/plugins_
 
 Description:
 
