@@ -11,6 +11,7 @@ __Propsed Future Topics__:
 * Openlayers, Leaflet examples
 * PostGis
 * EO - Sentinel 1 & Sentinel 2 (SentinelHUB)
+* R and Spatial data (showcase [wolfexporer](https://github.com/romunov/wolfexplorer))
 * _ADD YOUR SUGGESTION_
 
 __Useful links:__
