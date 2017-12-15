@@ -1,0 +1,3 @@
+[submodule "2017-02-meetup/02_R_Shiny_application/geodev-meetup-app"]
+	path = 2017-02-meetup/02_R_Shiny_application/geodev-meetup-app
+	url = https://github.com/zkuralt/geodev-meetup-app
