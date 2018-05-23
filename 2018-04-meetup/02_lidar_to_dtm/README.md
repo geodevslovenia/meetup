@@ -2,5 +2,5 @@
 
 __Klemen Lovenjak__
 
-Repository (arso-lidar2dtm)[https://github.com/lovenjak/arso-lidar2dtm]
+Repository [arso-lidar2dtm](https://github.com/lovenjak/arso-lidar2dtm)
 

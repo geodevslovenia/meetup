@@ -2,7 +2,7 @@
 
 __Matej Račič__
 
-(Presentations)[]
+[Download presentation](https://github.com/geodevslovenia/meetup/raw/master/2018-04-meetup/01_neural_networks/NN.odp)
 
 _References:_
 * identifikacija stavb
