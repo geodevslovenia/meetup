@@ -1,4 +1,4 @@
-### GeoDev WorkShop : 
+### GeoDev WorkShop: Pridobivanje in obdelava časovnih vrst satelitskih posnetkov 
 
 *Date*: 03.07.2018
 *Location*: UL FGG
